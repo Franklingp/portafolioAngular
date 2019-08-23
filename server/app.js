@@ -1,11 +1,13 @@
 'use strict'
 
 // Modulo de configuracion del backend
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
 //Importacion de rutas
+const userRoutes = require('./routes/user.routes');
 
 //Middleware
 app.use(bodyParser.urlencoded({extended:false}));
@@ -21,6 +23,7 @@ app.use((req, res, next) => {
 });
 
 //Rutas
+app.use('/api/user', userRoutes);
 
 //Exportar
 module.exports = app;
