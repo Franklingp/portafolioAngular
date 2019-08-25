@@ -23,7 +23,7 @@ userModel.pre('save', function(){
 
 	if(!this.isModified('password')) return true;			//Condicional para comprobar si se ha modificado el pass
 	this.password = bcrypt.hashSync(this.password);			//Con este metodo no se manejan promesas
-	console.log(this);
+	//console.log(this);
 	
 }); 
 
