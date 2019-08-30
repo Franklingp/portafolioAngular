@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+	font-family: Poppins;
+}
+
+.navbar{
+	margin-top: 78px;
+}
+
+.footer{
+	background: #4A5257;
+	height: 173px;
+}
