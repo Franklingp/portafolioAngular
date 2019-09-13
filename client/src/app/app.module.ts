@@ -5,19 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
-import { CommonModule } from '@angular/common';
-
-import { HomeComponent } from './common/home/home.component';
-import { AboutComponent } from './common/about/about.component';
-import { ContactComponent } from './common/contact/contact.component';
-
+import { CommonModule } from './common/common.module';
+//import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    ContactComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

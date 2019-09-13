@@ -1,0 +1,25 @@
+/* Estilos de la barra de navegacion */
+
+.navbar-light .navbar-nav .nav-link{
+	padding-left: 53px;
+}
+
+.white{
+	color: white !important;
+	text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.69);
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 36px;
+}
+
+.top{
+	color: white;
+	margin-top: 60px;
+	position: relative;
+	z-index: 1;
+	background: rgba(0,0,0,0.0);
+	margin-left: 102px;
+	margin-right: 102px;  
+}

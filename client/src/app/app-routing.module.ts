@@ -12,6 +12,18 @@ const routes: Routes = [
 	{ path: "home", component: HomeComponent },
 	{ path: 'about', component: AboutComponent },
 	{ path: 'contact', component: ContactComponent },
+
+	// Lazy Loading para el modulo de autenticacion
+	{
+	    path: '',
+	    children: [
+	     {
+	       path: '',
+	       loadChildren: './authentication/authentication.module#AuthenticationModule'
+	     }
+	    ]
+  	},
+
 	{ path: '**', component: HomeComponent }
 	
 ];

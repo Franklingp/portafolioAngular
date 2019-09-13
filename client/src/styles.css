@@ -1,11 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos globales de la pagina */
 
 body{
 	font-family: Poppins;
+	color: #3E3E3E;
 }
 
-.navbar{
-	margin-top: 78px;
+.contenedor{
+	min-height: 720px;
 }
 
 .footer{
