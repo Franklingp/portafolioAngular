@@ -1,3 +1,36 @@
-<p>
-  user-form works!
-</p>
+<!--Seccion  de formulario para usuario-->
+<div>
+	<h1>{{title}}</h1>
+	<hr>
+
+	<form  [formGroup]="userForm" (submit)="onSubmit(userForm.value)">
+
+		<span class="alert-danger" role="alert">{{getError('name')}}</span>
+		<div class="form-group">
+			<label for="name">Nombre</label>
+			<input formControlName="name" class="form-control" id="name" type="text" placeholder="Nombre">
+		</div>
+		
+		<span class="alert-danger" role="alert">{{getError('surname')}}</span>
+		<div class="form-group">
+			<label for="surname">Apellido</label>
+			<input formControlName="surname" class="form-control" id="surname" type="text" placeholder="Apellido">
+		</div>
+
+		<span class="alert-danger" role="alert">{{getError('email')}}</span>
+		<div class="form-group">
+			<label for="email">Correo electronico</label>
+			<input formControlName="email" class="form-control" id="email" type="email" placeholder="Correo electronico">
+		</div>
+
+		<span class="alert-danger" role="alert">{{getError('password')}}</span>
+		<div class="form-group">
+			<label for="password">Contraseña</label>
+			<input formControlName="password" class="form-control" id="password" type="password" placeholder="contraseña">
+		</div>
+
+		<button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Guardar</button>
+
+	</form>
+</div>
+	

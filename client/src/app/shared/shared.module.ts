@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { SharedRoutingModule } from './shared-routing.module';
 import { UserFormComponent } from './user-form/user-form.component';
@@ -8,7 +10,11 @@ import { UserFormComponent } from './user-form/user-form.component';
   declarations: [UserFormComponent],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+  	UserFormComponent
   ]
 })
 export class SharedModule { }

@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
 import { CommonModule } from './common/common.module';
-//import { AuthenticationModule } from './authentication/authentication.module';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CommonModule } from './common/common.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
