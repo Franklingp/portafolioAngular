@@ -55,13 +55,19 @@ var userController = {
 		user.password = aux.password;
 		//Agregar la imagen
 
-		//console.log(user);
-		user.save((error, userSaved) => {
-			if(error) return res.status(500).send({message: "Ha ocurrido un error al intentar registrar el usuario "});
-			
-			//En token va una funsion donde se debe encripta un token y se envia al cliente, No se retorna datos del usuario
-			return res.status(200).send({User: userSaved, TOKEN: auth.createToken(userSaved)}); 	
-		});
+		User.findOne({'email': user.email}).exec((error, userFound)=> {
+			if(userFound){
+				return res.status(400).send({message: "El email ya esta registrado"});
+			}else{
+				//console.log(user);
+				user.save((error, userSaved) => {
+					if(error) return res.status(500).send({message: "Ha ocurrido un error al intentar registrar el usuario "});
+					
+					//En token va una funsion donde se debe encripta un token y se envia al cliente, No se retorna datos del usuario
+					return res.status(200).send({user: userSaved}); //, TOKEN: auth.createToken(userSaved)
+				});
+			}
+		});		
 	}
 };
 

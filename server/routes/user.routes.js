@@ -9,6 +9,6 @@ const auth = require('../middlewares/auth.middleware');
 	//Definiendo las rutas que va a estar enlazadas con el controlador de usuarios
 
 router.post("/singUp", userController.singUp);
-router.get("/singIn", userController.singIn);
+router.post("/singIn", userController.singIn);
 
 module.exports = router;
