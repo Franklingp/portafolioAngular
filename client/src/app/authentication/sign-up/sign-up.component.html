@@ -3,6 +3,6 @@
 
 <section class="container jumbotron text-center">
 	
-	<app-user-form [title]="this.title" (formValue)='this.captureForm($event)'></app-user-form>
+	<app-user-form [error]="this.errorForm" [title]="this.title" (formValue)='this.captureForm($event)'></app-user-form>
 
 </section>

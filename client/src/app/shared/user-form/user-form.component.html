@@ -3,6 +3,10 @@
 	<h1>{{title}}</h1>
 	<hr>
 
+	<div class="alert alert-warning" role="alert" *ngIf=error>
+			{{error}}
+	</div>
+
 	<form  [formGroup]="userForm" (submit)="onSubmit(userForm.value, $event)">
 
 		<span class="alert-danger" role="alert">{{getError('name')}}</span>

@@ -10,6 +10,7 @@ export class UserFormComponent implements OnInit {
 	private  userForm: FormGroup;
 
 	@Input() title: string;
+  @Input() error: string;
 	@Output() formValue = new EventEmitter();
 
 
