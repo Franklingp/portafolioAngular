@@ -24,6 +24,17 @@ const routes: Routes = [
 	    ]
   	},
 
+  	// Lazy Loading para el modulo de proyectos
+  	{
+  		path: 'proyect',
+  		children:[
+  			{
+  				path: "",
+  				loadChildren: './proyect/proyect.module#ProyectModule'
+  			}
+  		]
+  	},
+
 	{ path: '**', component: HomeComponent }
 	
 ];
