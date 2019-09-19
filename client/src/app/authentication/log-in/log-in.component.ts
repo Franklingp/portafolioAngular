@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../service/auth.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -8,10 +11,15 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 })
 export class LogInComponent implements OnInit {
 	public title: string;
-  public logIn: FormGroup;
+  private logIn: FormGroup;
+  public invalidForm: boolean;
 
-  constructor( private fromBuilder: FormBuilder) {
+  constructor( private fromBuilder: FormBuilder,
+               private _authService: AuthService,
+               private _http: HttpClient,
+               private _router: Router) {
   	this.title = 'Iniciar Sesion';
+    this.invalidForm = false;
   }
 
   ngOnInit() {
@@ -44,6 +52,21 @@ export class LogInComponent implements OnInit {
 
   //Funsion que se ejecuta al hacer submit en el formulario de inicio de Sesion
   public onSubmit(form: any){
-    console.log(form);
+    this._http.post<string>("http://localhost:3700/api/user/singIn", form)
+        .subscribe(
+          response => {
+            let res: any;
+            res = response;
+            this._authService.dispatch(res.token);
+            alert(res.message);
+            this._router.navigate(["/home"]);
+          }, 
+          error => {
+            console.log(<any>error);
+            if(error.status == 403 || error.status == 404){
+              alert('No se ha podido iniciar sesion, email o contraseña invalido');
+              this.invalidForm = true;
+            }
+          });
   }
 }

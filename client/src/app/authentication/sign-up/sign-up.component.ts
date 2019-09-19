@@ -15,4 +15,8 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Funsion para capturar el los datos del componente hijo del formulario
+  public captureForm(event){
+  	console.log(event);
+  }
 }

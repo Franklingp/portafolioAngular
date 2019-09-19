@@ -7,6 +7,9 @@
 
 	<form [formGroup]="logIn" (submit)="onSubmit(logIn.value)">
 
+		<div class="alert alert-warning" role="alert" *ngIf="invalidForm">
+			No se ha podido iniciar sesion, email o contraseña invalido.
+		</div>
 		<span class="alert-danger" role="alert">{{getError('email')}}</span>
 		<div class="form-group">
 		    <label for="email">Direccion de Email</label>
@@ -32,5 +35,7 @@
 		<a class="" [routerLink]="['/sign-up']">Registrarte</a>
 
 	</form>
+
+	<p>{{this.bool}}</p>
 	
 </section>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,9 +7,10 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
-	public userForm: FormGroup;
+	private  userForm: FormGroup;
 
 	@Input() title: string;
+	@Output() formValue = new EventEmitter();
 
 
   constructor( private formBuilder: FormBuilder ) { }
@@ -29,7 +30,7 @@ export class UserFormComponent implements OnInit {
   }
 
   //Funsion para validar el forulari reactivo
-  public getError(formControl: string){
+  private getError(formControl: string){
   	let error: string = "";
   	const control = this.userForm.get(formControl);
   	if(control.errors != null && control.touched){
@@ -43,8 +44,11 @@ export class UserFormComponent implements OnInit {
   	return error
   }
 
-  //Funsion de submit del formulario
-  public onSubmit(form: any){
-  	console.log(form);
+  //Funsion de submit del formulario para mandar el contenido al componente padre
+  private onSubmit(form, event){
+    form.name = form.name.toLowerCase();
+    form.surname = form.surname.toLowerCase();
+    form.email = form.email.toLowerCase();
+  	this.formValue.emit(form);
   }
 }
