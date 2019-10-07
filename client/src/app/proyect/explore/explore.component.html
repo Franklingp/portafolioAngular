@@ -1,0 +1,22 @@
+<!--Seccion para explorar proyectos-->
+
+<img src="../../../assets/Image/binoculars.jpg" alt="Explorador" class="img-fluid header-img">
+
+<section class=" container" *ngIf="this.proyects.length != 1">
+	<h1 class="header">Explora proyectos</h1>
+	<br class="space">
+	<button type="button" class="btn btn-outline-warning btn-new" *ngIf="this.Auth" [routerLink]="['/proyect/create']">Proyecto nuevo</button>
+	<article class="first-text">Explora y descubre el catalogo de proyectos en los que hemos trabajado y cotiza el tuyo ...
+	</article>
+	<hr>
+	<section class="column"  *ngFor="let number of columns">
+		<article class="element" *ngFor="let element of number">
+			<a [routerLink]="['/proyect/detail', element._id]"><img src="../../../assets/Image/binoculars.jpg" class="element-img" alt="Imagen de proyecto"></a>
+			<div class="features">
+				<span>{{element.name}}</span>
+				<span>{{element.category}}</span>
+			</div>
+		</article>
+		
+	</section>
+</section>

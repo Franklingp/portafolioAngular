@@ -3,6 +3,7 @@
 <footer class="footer block">
 	<p>footer works!</p>
 
-	<a [routerLink]="['log-in']">Administrador</a>
+	<a [routerLink]="['log-in']" *ngIf="!this.logIn">Administrador</a>
+	<button type="button" class="btn btn-outline-primary" *ngIf="this.logIn" (click)="this.logOut()">Cerrar sesion</button>
 
 </footer>

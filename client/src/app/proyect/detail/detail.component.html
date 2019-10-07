@@ -1,3 +1,20 @@
-<p>
-  detail works!
-</p>
+<!--Seccion de detalles de un proyecto-->
+<img src="../../../assets/Image/adventure.jpg" alt="Imagen de cabecera" class="img-header">
+
+<section class="container" *ngIf="this.proyect">
+	<div class="block">
+		<aside class="details-left">
+			<img src="http://lorempixel.com/400/200" class="img-proyect" alt="Imagen de proyecto">
+			<span class='date'>Fecha: {{this.proyect.date}}</span>
+		</aside>
+		<article class="details-rigth">
+			<h1>{{this.proyect.name}}</h1>
+			<span>Categoria: {{this.proyect.category}}</span>
+			<p>Descripcion: {{this.proyect.description}}</p>
+		</article>
+	</div>
+	<div class="block">
+		<span>Git: <a href="{{this.proyect.git}}">Git</a></span>
+		<span>Url: <a href="{{this.proyect.url}}">Url</a></span>
+	</div>
+</section>

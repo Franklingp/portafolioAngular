@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { GlobalSettings } from '../../global/global-settings';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProyectService {
+	public url: string;
+
+  constructor(	private _http: HttpClient	) {
+  	//this.url = GlobalSettings.urlApi+"proyect";
+    this.url = "http://localhost:3700/api/proyect";
+  }
+
+  //Funsion para agregar un nuevo proyecto al servidor
+  addProyect(proyect): Observable<any>{
+  	let headers = new HttpHeaders().set("Content-Type", "application/json");
+  	return this._http.post(this.url+'/add', proyect, {headers: headers});
+  }
+
+  //Funsion para obtener el listado de proyectos completo del servidor
+  getProyect(): Observable<any>{
+    let headers = new HttpHeaders().set("Content-Type", "application/json");
+    return this._http.get(this.url+"/get", {headers:headers});
+  }
+
+  //Funsion para obtener un solo proyecto en especifico
+  getOne(id): Observable<any>{
+    let headers = new HttpHeaders().set("Content-Type", "application/json");
+    return this._http.get(this.url+'/get/'+id, {headers: headers});
+  }
+}

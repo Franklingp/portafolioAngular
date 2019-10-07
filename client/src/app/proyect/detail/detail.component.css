@@ -1,0 +1,39 @@
+.img-header{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	object-fit: cover;
+	width: 100%;
+	height: 30%;
+
+}
+
+.container{
+	position: relative;
+	margin: auto auto;
+    width: 75%;
+    margin-top: 10%;
+}
+
+.details-left{
+	float: left;
+	width: 45%;
+	text-align: center;
+}
+
+.img-proyect{
+	display: block;
+	margin: auto;
+	width: 80%;
+	object-fit: cover;
+}
+
+.date{
+	text-align: center;
+}
+
+.details-rigth{
+	float: right;
+	width: 45%;
+	text-align: center;
+}

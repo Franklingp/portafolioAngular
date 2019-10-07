@@ -1,3 +1,45 @@
-<p>
-  proyect-form works!
-</p>
+<!--Formulario de obtencion de datos de proyecto-->
+<span class="alert alert-danger" *ngIf="this.error">{{this.error}}</span>
+
+<form  [formGroup]="proyectForm" (submit)="onSubmit(proyectForm.value, $event)">
+	<span class="alert-danger">{{validateControl("name")}}</span>
+	<div class="form-group">
+		
+		<label for="name">Nombre del proyecto</label>
+    	<input formControlName="name" type="text" class="form-control" id="name" placeholder="Nombre">
+	</div>
+
+	<span class="alert-danger">{{validateControl("category")}}</span>
+	<div class="form-group">
+		<label for="category">Categoria del proyecto</label>
+    	<input formControlName="category" type="text" class="form-control" id="category" placeholder="Categoria">
+	</div>
+
+	<span class="alert-danger">{{validateControl("description")}}</span>
+	<div class="form-group">
+		<label for="description">Descripcion del proyecto</label>
+    	<textarea formControlName="description" class="form-control" name="description" id="description" placeholder="Descripcion"></textarea>
+	</div>
+
+	<span class="alert-danger">{{validateControl("images")}}</span>
+	<div class="form-group">
+		<label for="images">Imagenes del proyecto</label>
+		<br>
+    	<input formControlName="images" type="file" id="images" placeholder="Imagen">
+	</div>
+
+	<span class="alert-danger">{{validateControl("url")}}</span>
+	<div class="form-group">
+		<label for="url">Url del proyecto</label>
+    	<input formControlName="url" type="url" class="form-control" id="url" placeholder="Url">
+	</div>
+
+	<span class="alert-danger">{{validateControl("git")}}</span>
+	<div class="form-group">
+		<label for="git">Git del proyecto</label>
+    	<input formControlName="git" type="url" class="form-control" id="git" placeholder="Git">
+	</div>
+
+	<button type="submit" class="btn btn-primary" [disabled]="proyectForm.invalid">Enviar</button>
+
+</form>

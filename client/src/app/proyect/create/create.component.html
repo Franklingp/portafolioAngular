@@ -1,5 +1,7 @@
-<p>
-  create works!
-</p>
-
-<app-proyect-form></app-proyect-form>
+<!--Seccion para agregar un nuevo proyecto a la pagina web-->
+<br>
+<section class="text-center container jumbotron">
+	<h1>Agregar nuevo proyecto</h1>
+	<hr>
+	<app-proyect-form (formData)="onSubmit($event)"></app-proyect-form>
+</section>
