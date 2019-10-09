@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProyectService } from '../service/proyect.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../authentication/service/auth.service';
 
 @Component({
   selector: 'app-create',
@@ -10,23 +11,22 @@ import { Router } from '@angular/router';
 
 export class CreateComponent implements OnInit {
 
-  constructor(	private _privateService: ProyectService,
+  constructor(	private _proyectService: ProyectService,
+                private _auth: AuthService,
                 private _router: Router	) { }
 
   ngOnInit() {
+    this.isAuth();
   }
 
   //Funsion para obtener los datos del fomulario y enviarlos al servidor
   onSubmit(event){
-  	console.log(event);
-  	this._privateService.addProyect(event).subscribe(
+  	//console.log(event);
+  	this._proyectService.addProyect(event).subscribe(
   		response => {
   			console.log(response);
-
-
-            //Aqui debe ir el codigo de guardado para agregar un nuevo proyecto
-
-
+        alert('Se ha agregado el nuevo proyecto exitosamente');
+        this._router.navigate(["/proyect/explore"]);
   		}, 
   		error => {
   			console.log(<any>error);
@@ -35,6 +35,17 @@ export class CreateComponent implements OnInit {
           this._router.navigate(["/log-in"]);
         }
   	});
+  }
+
+  //Funsion para comprobar si el usuario esta autenticado o no 
+  private isAuth(){
+    this._auth.select$().subscribe(
+      auth => {
+        if(!auth){
+          alert("Debe estar autenticado para poder acceder a esta seccion");
+          this._router.navigate(['/log-in']);
+        }
+      });
   }
 
 }

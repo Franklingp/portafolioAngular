@@ -17,7 +17,7 @@
 
 .details-left{
 	float: left;
-	width: 45%;
+	width: 50%;
 	text-align: center;
 }
 
@@ -34,6 +34,6 @@
 
 .details-rigth{
 	float: right;
-	width: 45%;
+	width: 50%;
 	text-align: center;
 }
