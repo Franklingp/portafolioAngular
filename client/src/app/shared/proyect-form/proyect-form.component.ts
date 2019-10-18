@@ -9,6 +9,7 @@ import { Proyect } from '../../models/proyect';
 })
 export class ProyectFormComponent implements OnInit {
 	private proyectForm: FormGroup;
+  private imgData: any;
 
 	@Input() error: string;
 	@Input() proyect: Proyect;
@@ -61,8 +62,17 @@ export class ProyectFormComponent implements OnInit {
   	form.category = form.category.toLowerCase();
   	form.url = form.url.toLowerCase();
   	form.git = form.git.toLowerCase();
+    form.images = this.imgData;
   	console.log(form);
   	this.formData.emit(form);
+  }
+
+
+  //Funsion para obtener los datos de las imagenes cargadas para la pagina
+  private changeImg(imgData){
+    console.log(imgData);
+    let data = imgData.target.files;
+    this.imgData = data;
   }
 
 }

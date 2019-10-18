@@ -1,3 +1,7 @@
+.light{
+	color: #7E7E7E;
+}
+
 .img-header{
 	position: absolute;
 	top: 0px;
@@ -11,29 +15,47 @@
 .container{
 	position: relative;
 	margin: auto auto;
-    width: 75%;
+    width: 80%;
     margin-top: 10%;
 }
 
 .details-left{
 	float: left;
-	width: 50%;
+	width: 48%;
 	text-align: center;
 }
 
 .img-proyect{
 	display: block;
 	margin: auto;
-	width: 80%;
+	width: 93%;
 	object-fit: cover;
 }
 
 .date{
+	position: relative;
 	text-align: center;
+	top: 10px;
 }
 
 .details-rigth{
 	float: right;
 	width: 50%;
 	text-align: center;
+}
+
+.block{
+	text-align: center;
+	position: relative;
+	display: block;
+}
+
+.buttons{
+	text-align: center;
+	display: block;
+}
+
+.btn-edit{
+	margin: 10px;
+	width: 18%;
 }

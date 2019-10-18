@@ -1,9 +1,21 @@
 <!--Este es el pie de la pagina-->
 
 <footer class="footer block">
-	<p>footer works!</p>
+	<a class="title link" [routerLink]="['home']">Portafolio</a>
 
-	<a [routerLink]="['log-in']" *ngIf="!this.logIn">Administrador</a>
-	<button type="button" class="btn btn-outline-primary" *ngIf="this.logIn" (click)="this.logOut()">Cerrar sesion</button>
+	<div class="contact">
+		<span class="text">Contacto: </span>
+		<div class ="icons">
+			<a href="#" class="link"><a class="fab fa-instagram element"></a></a>
+			<a href="#" class="link"><a class="fab fa-facebook element"></a></a>
+			<a href="#" class="link"><a class="fab fa-twitter-square element"></a></a>
+			<a href="#" class="link"><a class="fab fa-github element"></a></a>
+		</div>
+	</div>
+
+	<div class="center">
+		<a [routerLink]="['log-in']" *ngIf="!this.logIn" class="btn btn-outline-light submit admin">Administrador</a>
+		<button type="button" class="btn btn-outline-light" *ngIf="this.logIn" (click)="this.logOut()">Cerrar sesion</button>
+	</div>
 
 </footer>

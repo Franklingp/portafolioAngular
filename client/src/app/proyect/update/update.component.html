@@ -1,7 +1,7 @@
 <!--Seccion para actualizar un proyecto del servidor-->
 <br>
-<section class="text-center container jumbotron">
-	<h1>Actualizar proyecto</h1>
+<section *ngIf="this.proyect" class="text-center container jumbotron">
+	<h1>Editar proyecto</h1>
 	<hr>
-	<app-proyect-form (formData)="onSubmit($event)"></app-proyect-form>
+	<app-proyect-form [proyect]="this.proyect" (formData)="onSubmit($event)"></app-proyect-form>
 </section>

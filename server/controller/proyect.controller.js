@@ -43,6 +43,10 @@ var proyectController = {
 		proyect.url = request.url;
 		proyect.Git = request.git;
 
+		console.log(req.body);
+		console.log(req.file);
+		console.log(req.files);
+
 		proyect.save((error, saved) => {
 			if(error) return res.status(500).send({message: 'Ha ocurrido un error al intentar guaradar los datos'});
 			if(!saved) return res.status(404).send({message: 'No se ha encontrado los datos a guardar'});

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProyectService } from '../service/proyect.service';
 import { Proyect } from '../../models/proyect';
+import { AuthService } from '../../authentication/service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -11,11 +13,17 @@ import { Proyect } from '../../models/proyect';
 export class DetailComponent implements OnInit {
 	public id: string;
 	public proyect: Proyect;
+  private isAuth: boolean;
 
   constructor(	private _route: ActivatedRoute,
-  				private _proyectService: ProyectService  ) { }
+  				      private _proyectService: ProyectService,
+                private _authService: AuthService,
+                private _router: Router) {
+    this.isAuth = null;
+  }
 
   ngOnInit() {
+    this.getAuth();
   	this.getId();
   	this.getProyect();
   }
@@ -41,5 +49,31 @@ export class DetailComponent implements OnInit {
   			alert(error.message);
   		}
   	);
+  }
+
+  //Funsion para determinar si un usuario esta logueado
+  private getAuth(){
+    this._authService.select$().subscribe(
+      bool => {
+        this.isAuth = bool;
+      }
+    );
+  }
+
+  //Funsion para eliminar un proyecto
+  private removeProyect(id){
+    let boolean = confirm("Esta seguro que desea eliminar el proyecto "+this.proyect.name+" permanentemente?");
+    if(boolean){
+      this._proyectService.removeOne(id).subscribe(
+        response => {
+          alert('Se ha eliminado el proyecto exitosamente');
+          this._router.navigate(["/proyect/explore"]);
+        },
+        error => {
+          console.log(<any>error);
+          alert(error.message);
+        }
+      );
+    }
   }
 }

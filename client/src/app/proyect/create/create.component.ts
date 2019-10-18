@@ -21,12 +21,12 @@ export class CreateComponent implements OnInit {
 
   //Funsion para obtener los datos del fomulario y enviarlos al servidor
   onSubmit(event){
-  	//console.log(event);
+  	console.log(event);
   	this._proyectService.addProyect(event).subscribe(
   		response => {
   			console.log(response);
         alert('Se ha agregado el nuevo proyecto exitosamente');
-        this._router.navigate(["/proyect/explore"]);
+        //this._router.navigate(["/proyect/explore"]);
   		}, 
   		error => {
   			console.log(<any>error);
@@ -35,6 +35,18 @@ export class CreateComponent implements OnInit {
           this._router.navigate(["/log-in"]);
         }
   	});
+
+    let imgData = new FormData();
+    imgData.append("uploads[]", event.images[0], event.images[0].name);
+    this._proyectService.addProyect(imgData).subscribe(
+      res => {  
+        console.log(res);
+       },
+      error => { 
+        console.log(error);
+       }
+    );
+
   }
 
   //Funsion para comprobar si el usuario esta autenticado o no 

@@ -5,6 +5,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const multipart = require('connect-multiparty');
 
 //Importacion de rutas
 const userRoutes = require('./routes/user.routes');

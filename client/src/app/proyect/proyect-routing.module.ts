@@ -11,7 +11,7 @@ const routes: Routes = [
 	{path:"explore", component: ExploreComponent},
 	{path:"detail/:id", component: DetailComponent},
 	{path:"create", component: CreateComponent},
-	{path:"update", component: UpdateComponent},
+	{path:"update/:id", component: UpdateComponent},
 	{path: '**', component: ExploreComponent}
 
 ];

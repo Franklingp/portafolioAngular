@@ -5,16 +5,21 @@
 	<div class="block">
 		<aside class="details-left">
 			<img src="http://lorempixel.com/1024/720" class="img-proyect" alt="Imagen de proyecto">
-			<span class='date'>Fecha: {{this.proyect.date}}</span>
+			<span class='date light'>Fecha: {{this.proyect.date}}</span>
 		</aside>
 		<article class="details-rigth">
 			<h1>{{this.proyect.name}}</h1>
-			<span>Categoria: {{this.proyect.category}}</span>
+			<span class="light">Categoria: {{this.proyect.category}}</span>
 			<p>Descripcion: {{this.proyect.description}}</p>
 		</article>
 	</div>
 	<div class="block">
 		<span>Git: <a href="{{this.proyect.git}}">Git</a></span>
+		<br>
 		<span>Url: <a href="{{this.proyect.url}}">Url</a></span>
+	</div>
+	<div class="buttons" *ngIf="this.isAuth">
+		<a class="btn btn-warning btn-edit" [routerLink]="['/proyect/update', this.proyect._id]">Editar</a>
+		<button type="button" class="btn btn-danger btn-edit" (click)="removeProyect(this.proyect._id)">Eliminar</button>
 	</div>
 </section>

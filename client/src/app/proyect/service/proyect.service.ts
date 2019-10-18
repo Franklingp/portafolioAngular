@@ -31,4 +31,16 @@ export class ProyectService {
     let headers = new HttpHeaders().set("Content-Type", "application/json");
     return this._http.get(this.url+'/get/'+id, {headers: headers});
   }
+
+  //Funsion para eliminar un proyecto de la base de datos
+  removeOne(id): Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.delete(this.url+'/remove/'+id, {headers: headers});
+  }
+
+  //Funsion para actualizar un proyecto en la base de datos
+  update(proyect, id): Observable<any>{
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.put(this.url+'/update/'+id, proyect, {headers: headers});
+  }
 }
