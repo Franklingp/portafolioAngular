@@ -43,4 +43,17 @@ export class ProyectService {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.put(this.url+'/update/'+id, proyect, {headers: headers});
   }
+
+  //Metodo para subir una imagen a la base de datos
+  uploadImage(data){
+    let headers = new HttpHeaders().set("Content-Type", "application/json");
+    return this._http.post(this.url+'/uploadImage', { file: data, name: 'images'}, {headers: headers});
+/*
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const formData = new FormData(); 
+    formData.append('images', data, data.name); 
+    console.log(formData);
+    return this._http.post(this.url+'/uploadImage', formData, {headers: headers});
+    */
+  }
 }

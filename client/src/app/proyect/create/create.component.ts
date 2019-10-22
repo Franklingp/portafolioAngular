@@ -22,6 +22,7 @@ export class CreateComponent implements OnInit {
   //Funsion para obtener los datos del fomulario y enviarlos al servidor
   onSubmit(event){
   	console.log(event);
+    /*
   	this._proyectService.addProyect(event).subscribe(
   		response => {
   			console.log(response);
@@ -34,11 +35,14 @@ export class CreateComponent implements OnInit {
           alert("Debe estar registrado para poder agregar nuevos proyectos");
           this._router.navigate(["/log-in"]);
         }
-  	});
+  	}); */
 
-    let imgData = new FormData();
-    imgData.append("uploads[]", event.images[0], event.images[0].name);
-    this._proyectService.addProyect(imgData).subscribe(
+    /*
+    console.log(event.images[0]);
+    let imgData = new FormData(event.images);
+    //imgData.append("image", event.images[0]);
+    console.log(imgData);
+    this._proyectService.uploadImage(imgData).subscribe(
       res => {  
         console.log(res);
        },
@@ -46,6 +50,20 @@ export class CreateComponent implements OnInit {
         console.log(error);
        }
     );
+    */
+
+    console.log(event.images[0]);
+    let imgData = event.images[0];
+    console.log(imgData);
+    this._proyectService.uploadImage(event.images[0]).subscribe(
+      res => {  
+        console.log(res);
+       },
+      error => { 
+        console.log(error);
+       }
+    );
+
 
   }
 

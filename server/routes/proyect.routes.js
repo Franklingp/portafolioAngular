@@ -6,18 +6,13 @@ const express = require('express');
 const router = express.Router();
 const proyectController = require('../controller/proyect.controller');
 const auth = require('../middlewares/auth.middleware');
-const multipart = require("connect-multiparty");
-
-//prueba
-const multipartMiddleware = multipart({
-	uploadDir: "./images"
-});
 
 router.get('/test', proyectController.test);
 router.get('/get/:id?', proyectController.getProyects);
-router.post('/add', auth,  multipartMiddleware, proyectController.addProyect);
+router.post('/add', auth, proyectController.addProyect);
 router.put('/update/:id', auth, proyectController.updateProyect);
 router.delete('/remove/:id', auth, proyectController.removeProyect);
+router.post('/uploadImage', proyectController.uploadImage);
 
 
 module.exports = router;

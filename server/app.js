@@ -5,7 +5,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const multipart = require('connect-multiparty');
+const multer = require("multer");
+const path = require('path');
+const cors = require('cors');
+
+
+//Configuracion de multer para subir imagenes
+const storage = multer.diskStorage({
+	destination: path.join(__dirname, 'public/images'),
+	filename: (req, file, cb) => {
+		cb(null, file.originalname);
+	}
+});
 
 //Importacion de rutas
 const userRoutes = require('./routes/user.routes');
@@ -13,17 +24,24 @@ const proyectRoutes = require('./routes/proyect.routes');
 
 
 //Middleware
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false, limit:'50mb'}));
+app.use(bodyParser.json({limit:'50mb'}));
+app.use(multer({
+	storage: storage,
+	dest: path.join(__dirname, "public/images")
+}).single('image'));
 
 // Configurar cabeceras y cors
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method', 'Access-Control-Allow-Origin');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+
+//app.use(cors());
 
 //Rutas
 app.use('/api/user', userRoutes);
