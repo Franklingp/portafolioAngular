@@ -8,7 +8,7 @@ const moment = require('moment');
 const secret = "Mi clave secreta";
 
 function isAuth(req, res, next){
-	console.log(req.headers.authorization);
+	//console.log(req.headers.authorization);
 	if(!req.headers.authorization) return res.status(403).send({message: 'No tiene autorizacion'});
 
 	let token = req.headers.authorization.split(' ')[1]; 		//porque la cabecera trae es: 'beare: token...s'

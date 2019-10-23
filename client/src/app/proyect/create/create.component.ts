@@ -21,8 +21,8 @@ export class CreateComponent implements OnInit {
 
   //Funsion para obtener los datos del fomulario y enviarlos al servidor
   onSubmit(event){
+    let errorResponse: boolean = null;
   	console.log(event);
-    /*
   	this._proyectService.addProyect(event).subscribe(
   		response => {
   			console.log(response);
@@ -35,36 +35,30 @@ export class CreateComponent implements OnInit {
           alert("Debe estar registrado para poder agregar nuevos proyectos");
           this._router.navigate(["/log-in"]);
         }
-  	}); */
+        errorResponse = true;
+  	});
 
-    /*
-    console.log(event.images[0]);
-    let imgData = new FormData(event.images);
-    //imgData.append("image", event.images[0]);
-    console.log(imgData);
-    this._proyectService.uploadImage(imgData).subscribe(
-      res => {  
-        console.log(res);
-       },
-      error => { 
-        console.log(error);
-       }
-    );
-    */
-
-    console.log(event.images[0]);
-    let imgData = event.images[0];
-    console.log(imgData);
-    this._proyectService.uploadImage(event.images[0]).subscribe(
-      res => {  
-        console.log(res);
-       },
-      error => { 
-        console.log(error);
-       }
-    );
-
-
+    //Seccion donde subo las imagenes al servidor
+    console.log(event.images);
+    if(event.images){
+      let imgData = new FormData();
+      imgData.set('image', event.images[0]);
+      console.log(imgData.get('image'));
+      this._proyectService.uploadImage(imgData).subscribe(
+        res => {  
+          console.log(res);
+         },
+        error => { 
+          console.log(<any>error);
+          errorResponse = true;
+         }
+      );
+    }
+    if(errorResponse){
+      alert("Ha ocurrido un error al intentar guardar el nuevo proyecto");
+    }else{
+      this._router.navigate(["/proyect/explore"]);
+    }
   }
 
   //Funsion para comprobar si el usuario esta autenticado o no 
