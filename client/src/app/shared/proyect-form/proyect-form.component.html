@@ -1,7 +1,7 @@
 <!--Formulario de obtencion de datos de proyecto-->
 <span class="alert alert-danger" *ngIf="this.error">{{this.error}}</span>
 
-<form  [formGroup]="proyectForm" (submit)="onSubmit(proyectForm.value, $event)">
+<form [formGroup]="proyectForm" (submit)="onSubmit(proyectForm.value, $event)">
 	<span class="alert-danger">{{validateControl("name")}}</span>
 	<div class="form-group">
 		
@@ -21,11 +21,29 @@
     	<textarea formControlName="description" class="form-control" name="description" id="description" placeholder="Descripcion"></textarea>
 	</div>
 
+	<br>
+	<br>
+
 	<span class="alert-danger">{{validateControl("images")}}</span>
 	<div class="form-group">
-		<label for="images">Imagenes del proyecto</label>
+		<div *ngIf="this.imgUploaded; else notImg">
+			<img src="{{this.imgData}}" alt="Imagen de proyecto" class="img">
+			<button type="button" class="btn btn-primary" (click)="changeImg(null)">Cambiar imagen</button>
+		</div>
 		<br>
-    	<input formControlName="images" type="file" id="images" name="images" placeholder="Imagen" (change)="changeImg($event)">
+		<ng-template #notImg>
+			<!--<label for="images">Imagenes del proyecto</label>
+    		<input class ="custom-file-input" formControlName="images" type="file" id="images" name="images" placeholder="Imagen" (change)="changeImg($event)"> -->
+			<div class="input-group mb-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text">Subir Imagen</span>
+			  </div>
+			  <div class="custom-file">
+			    <input type="file" class="custom-file-input" formControlName="images" id="images" name="images" placeholder="Imagen" (change)="changeImg($event)">
+			    <label class="custom-file-label" for="images">Seleccione una imagen</label>
+			  </div>
+			</div>
+    	</ng-template>
 	</div>
 
 	<span class="alert-danger">{{validateControl("url")}}</span>

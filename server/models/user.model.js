@@ -15,7 +15,7 @@ var userModel = Schema({
 	password: String,//{type: String, select: true},
 	singUp: {type: Date, default: Date.now},
 	lastSingIn: Date,
-	img: String
+	images: {type: String}
 });
 
 	//Middleware que encripta el password antes de guardarlo en la base de datos por seguridad

@@ -56,11 +56,11 @@ export class ExploreComponent implements OnInit {
   				this.proyects[index] = response.Proyect[index];
   			}
 
-        console.log(this.proyects);
+        //console.log(this.proyects);
 
   			let counter = 0;
   			for(let i = 0; i < Math.floor(this.proyects.length / 3) + 1; i++){
-  				console.log("padre");
+  				//console.log("padre");
           if(counter == this.proyects.length){
               break;
             }
@@ -71,8 +71,8 @@ export class ExploreComponent implements OnInit {
   					}
   					aux[j] = this.proyects[counter];
   					counter++;
-  					console.log("hijo");
-  					console.log(counter);
+  					//console.log("hijo");
+  					//console.log(counter);
   				}
   				this.columns[i] = aux;
   				aux = [{name: "",
@@ -87,7 +87,7 @@ export class ExploreComponent implements OnInit {
   			}
 
   			//console.log(this.proyects);
-  			console.log(this.columns);
+  			//console.log(this.columns);
 
   		},
   		error => {
@@ -100,7 +100,6 @@ export class ExploreComponent implements OnInit {
   //Metodo que reconoce si el usuario esta autenticado
   private isAuth(){
     this._authService.select$().subscribe(bool => { this.Auth = bool; });
-    console.log(this.Auth);
   }
 
 }

@@ -45,7 +45,7 @@ export class ProyectService {
   }
 
   //Metodo para subir una imagen a la base de datos
-  uploadImage(data){
-    return this._http.post(this.url+'/uploadImage', data);
+  uploadImage(data, id){
+    return this._http.post(this.url+'/uploadImage/'+id, data);
   }
 }

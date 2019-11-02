@@ -4,7 +4,7 @@
 <section class="container" *ngIf="this.proyect">
 	<div class="block">
 		<aside class="details-left">
-			<img src="http://lorempixel.com/1024/720" class="img-proyect" alt="Imagen de proyecto">
+			<img src="{{this.proyect.images}}" class="img-proyect" alt="Imagen de proyecto">
 			<span class='date light'>Fecha: {{this.proyect.date}}</span>
 		</aside>
 		<article class="details-rigth">

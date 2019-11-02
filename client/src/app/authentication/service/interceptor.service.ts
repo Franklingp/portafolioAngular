@@ -19,15 +19,15 @@ export class InterceptorService implements HttpInterceptor {
 
   	//Interceptor que manda el token en el header cuando un usuario esta logueado
   	intercept(request: HttpRequest<any>, next: HttpHandler): Observable <HttpEvent<any>>{
-      console.log(request);
+      //console.log(request);
   		const token = localStorage.getItem('token');
         if (token) {
             request = request.clone({ headers: request.headers.set('Authorization', 'beare: '+token) });
         }
 
-       if (!request.headers.has('Content-Type') && request.url != "http://localhost:3700/api/proyect/uploadImage") {
-            request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
-       }
+      //if (!request.headers.has('Content-Type') && request.url != "http://localhost:3700/api/proyect/uploadImage"+request) {
+      //      request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+      //}
 
         request = request.clone({ headers: request.headers.set('Accept', 'application/json') });
   		return next.handle(request);

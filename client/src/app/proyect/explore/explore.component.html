@@ -11,7 +11,7 @@
 	<hr>
 	<section class="column"  *ngFor="let number of columns">
 		<article class="element" *ngFor="let element of number">
-			<a [routerLink]="['/proyect/detail', element._id]"><img src="../../../assets/Image/binoculars.jpg" class="element-img" alt="Imagen de proyecto"></a>
+			<a [routerLink]="['/proyect/detail', element._id]"><img src="{{element.images}}" class="element-img" alt="Imagen de proyecto"></a>
 			<div class="features">
 				<span>{{element.name}}</span>
 				<br>

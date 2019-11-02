@@ -12,7 +12,7 @@ router.get('/get/:id?', proyectController.getProyects);
 router.post('/add', auth, proyectController.addProyect);
 router.put('/update/:id', auth, proyectController.updateProyect);
 router.delete('/remove/:id', auth, proyectController.removeProyect);
-router.post('/uploadImage', auth, proyectController.uploadImage);
+router.post('/uploadImage/:id', auth, proyectController.uploadImage);
 
 
 module.exports = router;

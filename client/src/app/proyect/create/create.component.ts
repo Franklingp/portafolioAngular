@@ -10,10 +10,15 @@ import { AuthService } from '../../authentication/service/auth.service';
 })
 
 export class CreateComponent implements OnInit {
+  public formSuccess: boolean;
+  public imgSuccess: boolean;
 
   constructor(	private _proyectService: ProyectService,
                 private _auth: AuthService,
-                private _router: Router	) { }
+                private _router: Router	) {
+    this.formSuccess = null;
+    this.imgSuccess = null;
+  }
 
   ngOnInit() {
     this.isAuth();
@@ -21,44 +26,39 @@ export class CreateComponent implements OnInit {
 
   //Funsion para obtener los datos del fomulario y enviarlos al servidor
   onSubmit(event){
-    let errorResponse: boolean = null;
-  	console.log(event);
-  	this._proyectService.addProyect(event).subscribe(
-  		response => {
-  			console.log(response);
-        alert('Se ha agregado el nuevo proyecto exitosamente');
-        //this._router.navigate(["/proyect/explore"]);
-  		}, 
-  		error => {
-  			console.log(<any>error);
-        if(error.status == 403){
-          alert("Debe estar registrado para poder agregar nuevos proyectos");
-          this._router.navigate(["/log-in"]);
-        }
-        errorResponse = true;
-  	});
-
-    //Seccion donde subo las imagenes al servidor
-    console.log(event.images);
-    if(event.images){
-      let imgData = new FormData();
-      imgData.set('image', event.images[0]);
-      console.log(imgData.get('image'));
-      this._proyectService.uploadImage(imgData).subscribe(
-        res => {  
-          console.log(res);
-         },
-        error => { 
+    let idProyect: string = null;
+  	//console.log(event);
+    if(!this.formSuccess || this.formSuccess == null){
+      this._proyectService.addProyect(event).subscribe(
+        response => {
+          console.log(response);
+          idProyect = response.Proyect._id;
+          this.formSuccess = true;
+          if(event.images !== "http://localhost:3700/images/default.jpg"){
+            this.uploadImage(event.images[0], idProyect);
+          }
+          if(this.formSuccess){
+            alert('Se ha agregado el nuevo proyecto exitosamente');
+            if(!this.imgSuccess){
+              alert("No se ha podido guardar una imagen personalizada para este proyecto por ello se asignara la imagen predefinida");
+            }
+            this._router.navigate(["/proyect/explore"]);
+          }
+        }, 
+        error => {
           console.log(<any>error);
-          errorResponse = true;
-         }
-      );
-    }
-    if(errorResponse){
-      alert("Ha ocurrido un error al intentar guardar el nuevo proyecto");
-    }else{
-      this._router.navigate(["/proyect/explore"]);
-    }
+          if(error.status == 403){
+            alert("Debe estar registrado para poder agregar nuevos proyectos");
+            this._router.navigate(["/log-in"]);
+          }else{
+            alert(error.message);
+          }
+          this.formSuccess = false;
+      });
+    }  	
+
+    
+
   }
 
   //Funsion para comprobar si el usuario esta autenticado o no 
@@ -70,6 +70,26 @@ export class CreateComponent implements OnInit {
           this._router.navigate(['/log-in']);
         }
       });
+  }
+
+  //Seccion donde subo las imagenes al servidor
+  private uploadImage(data, id){
+    console.log(id);
+      if(data){
+        let imgData = new FormData();
+        imgData.set('image', data);
+        this._proyectService.uploadImage(imgData, id).subscribe(
+          res => {  
+            console.log(res);
+            this.imgSuccess = true;
+           },
+          error => { 
+            console.log(<any>error);
+            alert(error.message);
+            this.imgSuccess = false;
+           }
+        );
+      }
   }
 
 }

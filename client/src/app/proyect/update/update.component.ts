@@ -12,6 +12,8 @@ import { AuthService } from '../../authentication/service/auth.service';
 export class UpdateComponent implements OnInit {
 	private id: string;
 	private proyect: Proyect;
+  private imgData: any;
+  private imgChanged: boolean;
 
   constructor(	private _router: Router,
   				private _proyectService: ProyectService,
@@ -19,6 +21,8 @@ export class UpdateComponent implements OnInit {
   				private _auth: AuthService	) {
 	this.id = null;
 	this.proyect = null;
+  this.imgData = null;
+  this.imgChanged = null;
 	}
 
   ngOnInit() {
@@ -32,6 +36,7 @@ export class UpdateComponent implements OnInit {
   	this._proyectService.getOne(this.id).subscribe(
   		response => {
   			this.proyect = response.Proyect;
+        this.imgData = this.proyect.images;
   		},
   		error => {
   			console.log(<any>error);
@@ -49,18 +54,43 @@ export class UpdateComponent implements OnInit {
 
   //Funsion para actualizar el proyecto 
   onSubmit(event){
-  	console.log(event);
+    let img = event.images;
+
+    ///console.log("img: "+img);
+    //console.log("proyect.images: "+this.imgData);
+    if(typeof(img) !== "string"){
+      //console.log(`hubo cambio`);
+      this.imgChanged = true; 
+      event.images = null;
+      event.images = this.imgData;
+    }
+
+    console.log(event);
   	this._proyectService.update(event, this.id).subscribe(
   		response => {
-  				console.log(response);
   				alert("Se ha actualizado el proyecto con exito");
-  				this._router.navigate(["/proyect/detail", this.proyect._id]);
+  				//this._router.navigate(["/proyect/detail", this.proyect._id]);
   			},
   		error => {
   			console.log(<any>error);
   			alert(error.message);
   		}
   	);
+
+    if(this.imgChanged === true){
+      this.imgData = new FormData()
+      this.imgData.set("image", img[0]);
+      this._proyectService.uploadImage(this.imgData, this.proyect._id).subscribe(
+        response => { console.log(response) },
+        error => {
+          console.log(<any>error);
+          alert(error.message);
+        }
+      )
+    }
+
+    this._router.navigate(["/proyect/detail", this.proyect._id]);
+    
   }
 
   //Funsion para comprobar si el usuario esta logueado

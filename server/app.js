@@ -28,7 +28,18 @@ app.use(bodyParser.urlencoded({extended:false, limit:'50mb'}));
 app.use(bodyParser.json({limit:'50mb'}));
 app.use(multer({
 	storage: storage,
-	dest: path.join(__dirname, "public/images")
+	dest: path.join(__dirname, "public/images"),
+	fileFilter: (req, file, cb) => {
+		const filetype = /jpg|jpeg|png|gif/;
+		const mimetype = filetype.test(file.mimetype);
+		const ext = filetype.test(path.extname(file.originalname));
+		if( mimetype && ext){
+			return cb(null, true);
+		}else{
+			return cb("Debe se subir un formato de imagen valido (jpg, png, jpeg o gif)");
+		}
+	}
+
 }).single('image'));
 
 // Configurar cabeceras y cors
@@ -40,6 +51,10 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+
+//Static files
+//Carpetas que se definen como publicas y poder acceder a ellas desde el navegador
+app.use(express.static(path.join(__dirname, "public")));
 
 //Rutas
 app.use('/api/user', userRoutes);
