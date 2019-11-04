@@ -21,6 +21,7 @@ const storage = multer.diskStorage({
 //Importacion de rutas
 const userRoutes = require('./routes/user.routes');
 const proyectRoutes = require('./routes/proyect.routes');
+const contactRoutes = require("./routes/contact.routes");
 
 
 //Middleware
@@ -59,6 +60,7 @@ app.use(express.static(path.join(__dirname, "public")));
 //Rutas
 app.use('/api/user', userRoutes);
 app.use('/api/proyect', proyectRoutes);
+app.use('/api/contact', contactRoutes);
 
 //Exportar
 module.exports = app;
