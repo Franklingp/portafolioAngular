@@ -27,10 +27,12 @@ export class ContactService {
 
   //Metodo para obtener los comentarios del servidor
   getMessage(id){
+ 	console.log(id);
   	if(!id){
   		return this._http.get(this.url+"/get", {headers: this.headers});
   	}else{
-  		this._http.get(this.url+"/get/"+id, {headers: this.headers});
+  		console.log("else");
+  		return this._http.get(this.url+"/get/"+id, {headers: this.headers});
   	}
   }
 }

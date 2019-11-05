@@ -1,0 +1,8 @@
+<!--Seccion de detalles de un mensaje-->
+<section *ngIf="this.message" class="container text-center">
+	<br>
+	<h1>{{this.message.name | titlecase}}</h1>
+	<hr>
+	<p>{{this.message.message | titlecase}}</p>
+	<span>Email: {{this.message.email | titlecase}}</span>
+</section>

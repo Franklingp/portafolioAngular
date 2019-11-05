@@ -5,9 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ContactRoutingModule } from './contact-routing.module';
 import { ContactComponent } from './contact/contact.component';
 import { AdminComponent } from './admin/admin.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
-  declarations: [ContactComponent, AdminComponent],
+  declarations: [ContactComponent, AdminComponent, DetailsComponent],
   imports: [
     CommonModule,
     ContactRoutingModule,

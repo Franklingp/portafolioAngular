@@ -7,15 +7,15 @@
 	  <thead>
 	    <tr>
 	      <th scope="col">Nombre</th>
-	      <th scope="col">Comentario</th>
+	      <th scope="col">Mensaje</th>
 	      <th scope="col">Fecha</th>
 	    </tr>
 	  </thead>
-	  <tbody>
-	    <tr>
-	      <td>Mark</td>
-	      <td>Otto</td>
-	      <th scope="row">1</th>
+	  <tbody *ngIf="this.success">
+	    <tr *ngFor="let message of this.messages" [style.color]="message.read ? '#999' : '#333' ">
+	      <td><a [routerLink]="['/contact/details/', message._id]" class="name">{{message.name | titlecase}}</a></td>
+	      <td>{{message.message | titlecase}}</td>
+	      <th scope="row">{{message.date | date : 'd MMM'}}</th>
 	    </tr>
 	    
 	  </tbody>
