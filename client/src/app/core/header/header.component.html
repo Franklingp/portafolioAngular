@@ -6,7 +6,10 @@
     <div class="navbar-nav ml-auto">
       <a class="nav-item nav-link white" [routerLink]="['proyect/explore']">Explorar <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link white" [routerLink]="['about']">Acerca de</a>
-      <a class="nav-item nav-link white" [routerLink]="['contact']">Contacto</a>
+      <a *ngIf="this.auth; else notAuth" class="nav-item nav-link white" [routerLink]="['contact/admin']">Contacto</a>
+      <ng-template #notAuth>
+      	<a class="nav-item nav-link white" [routerLink]="['contact']">Contacto</a>
+      </ng-template>
     </div>
   </div>
 </nav>

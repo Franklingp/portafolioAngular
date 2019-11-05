@@ -1,0 +1,30 @@
+<!--Seccion de contacto -->
+<img src="../../../assets/Image/contacto.jpg" alt="Contact" class="img-background">
+
+<section class="container">
+	<h1 class="header">Contacta con nosotros y has posible tu proyecto</h1>
+
+	<form [formGroup]="contactForm" class="form" (submit)="onSubmit(contactForm.value)">
+		<span class="alert-danger error">{{catchError("name")}}</span>
+		<div class="form-group">
+			<label for="name">Nombre</label>
+			<input formControlName="name" type="text" name="name" placeholder="Nombre" class="form-control">
+		</div>
+
+		<span class="alert-danger error">{{catchError("email")}}</span>
+		<div class="form-group">			
+			<label for="email">Correo electronico</label>
+			<input formControlName="email" type="email" name="email" placeholder="Email" class="form-control">
+			<small  class="form-text text-muted">Tus datos no seran revelados.</small>
+		</div>
+
+		<span class="alert-danger error">{{catchError("message")}}</span>
+		<div class="form-group">
+			<label for="messsage">Mensaje</label>
+			<textarea formControlName="message" name="messsage" placeholder="Mensaje" class="form-control"></textarea>
+		</div>
+
+		<button type="submit" class="btn btn-outline-light submit" [disabled]=!contactForm.valid>Enviar</button>
+	</form>
+
+</section>
