@@ -13,3 +13,7 @@ body{
 	background: #4A5257;
 	height: 173px;
 }
+
+.small{
+	color: white !important;
+}

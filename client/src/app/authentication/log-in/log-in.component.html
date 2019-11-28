@@ -1,9 +1,11 @@
 <!--Seccion de login de la pagina-->
+
+<img src="../../assets/Image/workplace.jpg" alt="Imagen de fondo" class="img-background">
+
 <br>
-<section class="container jumbotron text-center">
+<section class="container jumbotron text-center form">
 	
 	<h1>{{title}}</h1>
-	<hr>
 
 	<form [formGroup]="logIn" (submit)="onSubmit(logIn.value)">
 
@@ -14,7 +16,7 @@
 		<div class="form-group">
 		    <label for="email">Direccion de Email</label>
 		    <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-		    <small id="emailHelp" class="form-text text-muted">En ningun momento se expondran tus datos personales.</small>
+		    <small id="emailHelp" class="form-text text-muted small">En ningun momento se expondran tus datos personales.</small>
 		</div>
 
 		<span class=" alert-danger" role="alert">{{getError('password')}}</span>
@@ -29,10 +31,10 @@
 		    <label class="form-check-label" for="check">Mantener sesion iniciada</label>
 		</div>
 
-		<button type="submit" class="btn btn-primary" [disabled]="logIn.invalid">Iniciar sesion</button>
+		<button type="submit" class="btn btn-outline-light" [disabled]="logIn.invalid">Iniciar sesion</button>
 		<br>
 		<br>
-		<a class="" [routerLink]="['/sign-up']">Registrarte</a>
+		<a class="btn btn-success" [routerLink]="['/sign-up']">Registrarte</a>
 
 	</form>
 

@@ -35,8 +35,8 @@
 }
 
 .center{
-	position: relative;
-	left: 500px;
-	top: -30px;
+	position: absolute;
+	left: 600px;
+	margin-top: -30px;
 	color: white;
 }

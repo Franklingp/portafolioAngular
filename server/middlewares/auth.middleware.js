@@ -12,9 +12,14 @@ function isAuth(req, res, next){
 	if(!req.headers.authorization) return res.status(403).send({message: 'No tiene autorizacion'});
 
 	let token = req.headers.authorization.split(' ')[1]; 		//porque la cabecera trae es: 'beare: token...s'
-	const payload = jwt.decode(token, secret);
 
-	if(payload.exp <= moment().unix()) return res.status(401).send({message: 'El token ha expirado'});
+	try{
+		const payload = jwt.decode(token, secret);
+	}
+	catch(error){
+		console.log("Hubo un error en la autenticacion");
+		return res.status(401).send({message: 'El token ha expirado'});
+	} 
 
 	req.user = payload.sub;
 	next();

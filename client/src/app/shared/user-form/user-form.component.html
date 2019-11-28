@@ -1,7 +1,7 @@
 <!--Seccion  de formulario para usuario-->
-<div>
+<div class="form">
 	<h1>{{title}}</h1>
-	<hr>
+	<br>
 
 	<div class="alert alert-warning" role="alert" *ngIf=error>
 			{{error}}
@@ -33,7 +33,7 @@
 			<input formControlName="password" class="form-control" id="password" type="password" placeholder="contraseña">
 		</div>
 
-		<button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Guardar</button>
+		<button type="submit" class='btn btn-outline-light' [disabled]="userForm.invalid">Guardar</button>
 
 	</form>
 </div>

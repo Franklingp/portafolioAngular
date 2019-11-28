@@ -1,7 +1,9 @@
 <!--Esta es la seccion de registro para un administador-->
 <br>
 
-<section class="container jumbotron text-center">
+<img src="../../assets/Image/workplace.jpg" alt="Imagen de fondo" class="img-background">
+
+<section class="container text-center">
 	
 	<app-user-form [error]="this.errorForm" [title]="this.title" (formValue)='this.captureForm($event)'></app-user-form>
 
