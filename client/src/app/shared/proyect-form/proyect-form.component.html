@@ -28,7 +28,7 @@
 	<div class="form-group">
 		<div *ngIf="this.imgUploaded; else notImg">
 			<img src="{{this.imgData}}" alt="Imagen de proyecto" class="img">
-			<button type="button" class="btn btn-primary" (click)="changeImg(null)">Cambiar imagen</button>
+			<button type="button" class="btn btn-success" (click)="changeImg(null)">Cambiar imagen</button>
 		</div>
 		<br>
 		<ng-template #notImg>
@@ -58,6 +58,6 @@
     	<input formControlName="git" type="url" class="form-control" id="git" placeholder="Git">
 	</div>
 
-	<button type="submit" class="btn btn-primary" [disabled]="proyectForm.invalid">Enviar</button>
+	<button type="submit" class="btn btn btn-light" [disabled]="proyectForm.invalid">Enviar</button>
 
 </form>

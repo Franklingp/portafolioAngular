@@ -1,7 +1,11 @@
 <!--Seccion para actualizar un proyecto del servidor-->
+
+<img src="../../assets/Image/meeting.jpg" alt="Imagen de fondo" class="img-background long">
+
 <br>
-<section *ngIf="this.proyect" class="text-center container jumbotron">
+<section *ngIf="this.proyect" class="text-center container form proyect-form">
 	<h1>Editar proyecto</h1>
-	<hr>
+	<br>
 	<app-proyect-form [proyect]="this.proyect" (formData)="onSubmit($event)"></app-proyect-form>
 </section>
+

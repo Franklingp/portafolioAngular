@@ -5,6 +5,8 @@ import { Proyect } from '../../models/proyect';
 import { AuthService } from '../../authentication/service/auth.service';
 import { Router } from '@angular/router';
 
+import { HeaderService } from '../../core/service/header.service';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -18,11 +20,13 @@ export class DetailComponent implements OnInit {
   constructor(	private _route: ActivatedRoute,
   				      private _proyectService: ProyectService,
                 private _authService: AuthService,
-                private _router: Router) {
+                private _router: Router,
+                private _header: HeaderService) {
     this.isAuth = null;
   }
 
   ngOnInit() {
+    this._header.dispatch("details");
     this.getAuth();
   	this.getId();
   	this.getProyect();
