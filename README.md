@@ -1,5 +1,27 @@
-# Portafolio personal
-Este proyecto fue desasarrollado con Angular 7 en el frond-end, Node JS y Express en el Backend y MongoDB en base de datos.
+# Client
 
-# Descripción
-La parte central de este proyecto consta de un conjunto de acciones que le permiten al administrador o administaradores de la pagina publicar, observar, editar y eliminar sus proyectos de forma ordenada y limpia. Por otro lado para mantener la integridad de la pagina esta tiene integrado un sistema de usuario que permite registrar e identificar al administrador de la pagina para que solo el o ellos pueda editar el contenido de esta, y por el contrario al resto de visitantes de la pagina solo puedan visualizar el contenido sin editarlo. Tambien a su vez cuenta con una seccion de contacto que le permite a los visitantes de la pagina contactar con el administrador mediante un sistema de mensajeria recopilando informacion basica para que los administradores puedan ponerse en contacto posteriormente con los visitantes. Y por ultimo pero no menos importante, la pagina tambien posee una seccion de "Sobre nosotros" donde se muentra mas informacion sobre los servicios que los administradores tienen disponible y un pequeño apartado donde se encuentran las redes sociales de los administradores para poder obtener mas informacion o contenido al respecto.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
