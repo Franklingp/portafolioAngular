@@ -1,6 +1,6 @@
 # Portafolio Angular
 
-_Este proyecto es una aplicacion que permite vizualizar los proyectos que se encuentran guardados en un servidor, asi como agregar proyectos nuevos, editarlos o eliminarlos en caso de que estes registrado, ya que solo pueden hacer cambio en la pagina los que esten registrados. La pagina tambien cuenta con una bandeja de entradas de comentarios a donde llegan comentarios de los visitanetes de la pagina los cuales pueden dejar mensajes junto a sus datos para poder contactar con ellos mas adelante, por otro lado la pagina tambien cuenta con una pagina principal y una pagina de informacion sobre nosotros. El backend de este proyecto lo puedes ver aqui [Link](https://github.com/Franklingp/backendPersonal)_
+_Este proyecto es una aplicacion que permite vizualizar los proyectos que se encuentran guardados en un servidor, asi como agregar proyectos nuevos, editarlos o eliminarlos en caso de que estes registrado, ya que solo pueden hacer cambio en la pagina los que esten registrados. La pagina tambien cuenta con una bandeja de entradas de comentarios a donde llegan comentarios de los visitanetes de la pagina los cuales pueden dejar mensajes junto a sus datos para poder contactar con ellos mas adelante, por otro lado la pagina tambien cuenta con una pagina principal y una pagina de informacion sobre nosotros. El backend de este proyecto lo puedes ver aqui [Link](https://github.com/Franklingp/portafolioBackend)_
 
 ### Pre-requisitos 📋
 
